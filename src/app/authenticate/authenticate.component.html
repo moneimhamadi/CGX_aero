@@ -1,0 +1,85 @@
+<ng-template #myDialog>
+  <div class="row">
+    <h1>Mot de passe oubliée</h1>
+    <h6 class="information-text">Enter votre username</h6>
+    <div class="form-group">
+      <input
+        type="email"
+        name="user_email"
+        id="user_email"
+        [(ngModel)]="username"
+      />
+      <p><label for="username">Username</label></p>
+      <button (click)="sendResetPasswordEmail()">
+        Réinitialiser le mot de passe
+      </button>
+    </div>
+    <div class="footer">
+      <h5>
+        <a
+          [routerLink]="['/create-account']"
+          routerLinkActive="router-link-active"
+          >Créer un compte</a
+        >
+      </h5>
+      <h5>
+        Vous avez un compte?
+        <a
+          [routerLink]="['/authenticate']"
+          routerLinkActive="router-link-active"
+          >Se connecter</a
+        >
+      </h5>
+    </div>
+  </div>
+</ng-template>
+<div class="login">
+  <div class="container">
+    <div class="parentlogin">
+      <form [formGroup]="loginForm">
+        <div class="title">
+          <h1 style="font-size: 40px; font-weight: bold">Se connecter</h1>
+        </div>
+        <label class="label" for="name">Username</label>
+        <input type="text" placeholder="username" formControlName="username" />
+        <label class="label" for="password">Password</label>
+        <input
+          type="password"
+          placeholder="password"
+          placeholder="password"
+          formControlName="password"
+        />
+        <button type="submit" class="submit" (click)="authenticate()">
+          Connecter
+        </button>
+        <div class="extra">
+          <div class="forget">
+            <button
+              class="forget_password"
+              (click)="openDialogForgetPassword(myDialog)"
+            >
+              Mot de passe oubliée
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="parentdesc">
+      <div class="description">
+        <img
+          src="../../assets/Big_Smoke.png"
+          width="200px"
+          height="180px"
+          alt=""
+        />
+        <h2>Bienvenu</h2>
+        <p>Don't have an account?</p>
+        <a
+          [routerLink]="['/create-account']"
+          routerLinkActive="router-link-active"
+          >Créer un compte</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

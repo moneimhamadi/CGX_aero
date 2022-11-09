@@ -1,0 +1,91 @@
+<main>
+  <!-- hero section -->
+  <section class="hero">
+    <p class="hero__desc">
+      <img src="../../assets/Big_Smoke.png" alt="Logo" />
+    </p>
+    <h1 class="hero__title">Learn to code by watching others</h1>
+  </section>
+  <!-- hero section ends -->
+  <!-- sign-up section -->
+  <section class="sign-up">
+    <p class="sign-up__desc">
+      <span>
+        <a
+          [routerLink]="['/authenticate']"
+          routerLinkActive="router-link-active"
+        >
+          Vous avez un compte</a
+        ></span
+      >
+    </p>
+    <!-- the form itself -->
+    <form class="sign-up__form" [formGroup]="formCreateAccount">
+      <div class="form__input">
+        <input type="text" placeholder="Nom" formControlName="nom" />
+      </div>
+
+      <div class="form__input">
+        <input type="text" placeholder="Prénom" formControlName="prenom" />
+      </div>
+
+      <div class="form__input">
+        <input
+          type="date"
+          placeholder="Email Address"
+          formControlName="dateNaissance"
+        />
+      </div>
+      <div class="form__input">
+        <label class="label">Genre</label>
+        <select formControlName="sexe" class="option" value="Homme">
+          <option value="" selected disabled hidden>Choisir ici</option>
+          <option value="Homme" class="option">Homme</option>
+          <option value="Femme" class="option">Femme</option>
+          <option value="Autre" class="option">Autre</option>
+        </select>
+      </div>
+
+      <div class="form__input">
+        <input type="text " placeholder="Adresse" formControlName="adresse" />
+      </div>
+      <div class="form__input">
+        <input
+          type="text"
+          formControlName="codePostale"
+          placeholder="Code postale"
+        />
+      </div>
+      <div class="form__input">
+        <input
+          type="text"
+          placeholder="Numéro de téléphone"
+          formControlName="numTel"
+        />
+      </div>
+      <div class="form__input">
+        <input placeholder="Email" type="email" formControlName="email" />
+      </div>
+      <div class="form__input">
+        <input type="text" placeholder="username" formControlName="username" />
+      </div>
+      <div class="form__input">
+        <input
+          type="password"
+          placeholder="password"
+          formControlName="password"
+        />
+      </div>
+
+      <button class="submit-btn" type="submit" (click)="register()">
+        Créer un compte
+      </button>
+      <p class="form__terms">
+        By clicking the button, you are agreeing to our
+        <span>Terms and Services</span>
+      </p>
+    </form>
+    <!-- form ends -->
+  </section>
+  <!-- sign-up ends -->
+</main>

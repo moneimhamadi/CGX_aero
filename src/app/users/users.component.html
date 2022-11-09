@@ -1,0 +1,28 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2" style="margin-bottom: 50px">USERS</div>
+  <div>
+    <h2 style="color: black">Liste des utilisateurs</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Username</th>
+          <th>Date de dateNaissance</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listOfUsers">
+          <td data-label="Projeto" style="width: 200px">{{ item.nom }}</td>
+          <td data-label="Descrição">{{ item.prenom }}</td>
+          <td data-label="Administrador">{{ item.username }}</td>
+          <td data-label="Aplicações">
+            {{ item.dateNaissance | date: "dd/MM/yyyy" }}
+          </td>
+          <td data-label="Criado">{{ item.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
