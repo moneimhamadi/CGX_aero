@@ -20,6 +20,7 @@ export class AuthentificationService {
   private UrlCheckAccount = 'http://localhost:6039/user/isEnabled/';
   private URLSendResetPasswordEmail =
     'http://localhost:6039/email/sendEmailForgetPassword/';
+  private URLChangePassword = 'http://localhost:6039/user/changeUserPassword';
 
   constructor(private httpUser: HttpClient, private route: Router) {}
 
@@ -70,5 +71,11 @@ export class AuthentificationService {
   }
   sendResetPasswordEmail(username: string) {
     return this.httpUser.get(this.URLSendResetPasswordEmail + username);
+  }
+  changePassword(token: string, newPassword: string) {
+    return this.httpUser.put(
+      `${this.URLChangePassword}/${token}/${newPassword}`,
+      null
+    );
   }
 }
