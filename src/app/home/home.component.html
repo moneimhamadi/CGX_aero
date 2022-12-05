@@ -1,4 +1,73 @@
-<div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">HOME</div>
-  <div></div>
-</div>
+<head>
+  <link
+    href="https://fonts.googleapis.com/css?family=Raleway:400, 600"
+    rel="stylesheet"
+    type="text/scss"
+  />
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+      <ul class="nav">
+        <li>About</li>
+        <li>Work</li>
+        <li>Team</li>
+        <li>Contact</li>
+        <li style="margin-left: auto">
+          <a [routerLink]="['/login']" class="btn-main">Go to login page</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <img
+        src="../../assets/output-onlinepngtools.png"
+        alt=""
+        style="margin-top: 60px"
+        height="300px"
+        width="300px"
+      />
+
+      <div class="main">
+        <h1>Data processing for decision making</h1>
+        <!-- <a href="#" class="btn-main">Get Started</a> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="supporting">
+    <div class="container">
+      <div class="col">
+        <img src="https://cdn.onlinewebfonts.com/svg/img_106656.png" />
+        <h2>Satisfaction</h2>
+        <p>ONE PRIORITY: FULFILL YOUR NEEDS</p>
+        <a href="#" class="btn-default">Learn More</a>
+      </div>
+      <div class="col">
+        <img
+          src="https://www.nicepng.com/png/detail/432-4325014_customer-relationship-png-cooperation-icon-png.png"
+        />
+        <h2>Relations</h2>
+        <p>ONE PHILOSOPHY: CREATE RELATIONSHIP BEYOND CONSULTANCY</p>
+        <a href="#" class="btn-default">Learn More</a>
+      </div>
+      <div class="col">
+        <img
+          src="https://w7.pngwing.com/pngs/59/134/png-transparent-chart-computer-icons-statistics-report-elevator-repair-miscellaneous-angle-text.png"
+        />
+        <h2>Stattistics</h2>
+        <p>ONE AIM: EXCEED YOUR EXPECTATIONS</p>
+        <a href="#" class="btn-default">Learn More</a>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <p>&copy; CGX aero 2022</p>
+    </div>
+  </div>
+</body>

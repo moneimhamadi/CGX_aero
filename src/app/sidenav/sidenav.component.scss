@@ -9,44 +9,59 @@
   padding: 2.6rem 1rem;
   img {
     width: 230px;
+    height: 180px;
   }
 }
 .mat-divider {
-  border-top-width: 2px;
+  border-top-width: 0.5px;
   border-color: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .mat-list-item {
-  color: #94a3b8 !important;
-  font-size: 0.8rem;
+  color: #f7f8fa !important;
+  font-size: 16px;
+  font-weight: bold;
   height: 44px !important;
   margin-bottom: 4px;
   &:hover {
-    color: #f2f5f7 !important;
+    color: black !important;
   }
   ::ng-deep {
     .mat-list-item-content {
       border-radius: 5px;
       margin: 0 8px;
       &:hover {
-        background: #2c3344 !important;
+        background: #fefeff !important;
       }
     }
   }
 }
 .list-item-active {
-  color: #f2f5f7 !important;
+  color: rgb(4, 0, 0) !important;
   ::ng-deep {
     .mat-list-item-content {
-      background: #2c3344 !important;
+      background: rgba(8, 80, 138, 255) !important;
       &:hover {
-        background: #2c3344 !important;
+        background: white !important;
       }
     }
   }
 }
 .mat-subheader {
-  color: #818cf8;
-  font-size: 0.6rem;
+  color: #000003;
+  font-size: 12px;
   font-weight: 100;
   letter-spacing: 1px;
+}
+#logout {
+  text-transform: uppercase;
+  text-align: center;
+  margin: auto;
+  width: 90px;
+  border-radius: 5%;
+  font-weight: bold;
+}
+.button-logout {
+  display: grid;
 }

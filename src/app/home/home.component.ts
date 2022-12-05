@@ -10,4 +10,7 @@ export class HomeComponent implements OnInit {
   constructor(private route: Router) {}
 
   ngOnInit(): void {}
+  goToLoginPage() {
+    this.route.navigate(['/login']);
+  }
 }

@@ -7,48 +7,40 @@ import {
 } from '@angular/common/http';
 import { User } from '../models/User';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { SignUpRequest } from '../Models/signUpRequest';
+import { LoginRequest } from '../Models/signInRequest';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthentificationService {
-  private URLCreateAccount: string = 'http://localhost:6039/user/saveUser';
-  private URLAuthenticate: string = 'http://localhost:6039/api/login';
+  private URLCreateAccount: string = 'http://localhost:9090/user/signUp';
+  private URLAuthenticate: string = 'http://localhost:9090/api/auth/signin';
   private UrlGenerateRefreshToken = 'http://localhost:6039/user/token/refresh';
-  private UrlCheckAccount = 'http://localhost:6039/user/isEnabled/';
-  private URLSendResetPasswordEmail =
-    'http://localhost:6039/email/sendEmailForgetPassword/';
-  private URLChangePassword = 'http://localhost:6039/user/changeUserPassword';
 
   constructor(private httpUser: HttpClient, private route: Router) {}
 
-  saveUser(user: User) {
+  saveUser(SignUpRequest: SignUpRequest): Observable<Object> {
     return this.httpUser
-      .post(this.URLCreateAccount, user)
+      .post<SignUpRequest>(this.URLCreateAccount, SignUpRequest)
       .pipe(catchError(this.handleError));
   }
   handleError(error: HttpErrorResponse) {
     console.log(error);
     return throwError(error);
   }
-  authenticate(username: string, password: string) {
-    let params = new HttpParams()
-      .set('username', username)
-      .set('password', password);
-    return this.httpUser.get(this.URLAuthenticate, {
-      params: params,
-      responseType: 'json',
-    });
+  authenticate(loginRequest: LoginRequest) {
+    return this.httpUser.post(this.URLAuthenticate, loginRequest);
   }
   logout() {
     alert('SESSION EXPRIED');
     localStorage.clear();
-    this.route.navigate(['/authenticate']);
+    this.route.navigate(['/login']);
   }
   getAccesssToken() {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem('accessToken');
   }
   generateRefreshToken() {
     let refresh_token = this.getRefreshToken();
@@ -64,18 +56,6 @@ export class AuthentificationService {
     localStorage.setItem('refresh_token', tokensData.refresh_Token);
   }
   getRefreshToken() {
-    return localStorage.getItem('refresh_token');
-  }
-  checkEnabledAccount(username: string) {
-    return this.httpUser.get(this.UrlCheckAccount + username);
-  }
-  sendResetPasswordEmail(username: string) {
-    return this.httpUser.get(this.URLSendResetPasswordEmail + username);
-  }
-  changePassword(token: string, newPassword: string) {
-    return this.httpUser.put(
-      `${this.URLChangePassword}/${token}/${newPassword}`,
-      null
-    );
+    return localStorage.getItem('refreshToken');
   }
 }

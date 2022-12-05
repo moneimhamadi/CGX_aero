@@ -1,91 +1,208 @@
-<main>
-  <!-- hero section -->
-  <section class="hero">
-    <p class="hero__desc">
-      <img src="../../assets/Big_Smoke.png" alt="Logo" />
-    </p>
-    <h1 class="hero__title">Learn to code by watching others</h1>
-  </section>
-  <!-- hero section ends -->
-  <!-- sign-up section -->
-  <section class="sign-up">
-    <p class="sign-up__desc">
-      <span>
-        <a
-          [routerLink]="['/authenticate']"
-          routerLinkActive="router-link-active"
-        >
-          Vous avez un compte</a
-        ></span
-      >
-    </p>
-    <!-- the form itself -->
-    <form class="sign-up__form" [formGroup]="formCreateAccount">
-      <div class="form__input">
-        <input type="text" placeholder="Nom" formControlName="nom" />
-      </div>
+<div class="example-container mat-elevation-z8">
+  <h2 style="font-weight: 600">List of users</h2>
+  <button
+    class="btn btn-success"
+    style="float: right; margin-right: 20px"
+    (click)="openDialogAddUser(myDialog)"
+  >
+    Add new user
+  </button>
+  <br />
+  <br />
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.username }} </mat-cell>
+    </ng-container>
 
-      <div class="form__input">
-        <input type="text" placeholder="Prénom" formControlName="prenom" />
-      </div>
+    <ng-container matColumnDef="nom">
+      <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.prenom }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="prenom">
+      <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.prenom }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dateNaissance">
+      <mat-header-cell *matHeaderCellDef> Birth Date </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.dateNaissance | date : "dd/MM/yyyy" }}
+      </mat-cell>
+    </ng-container>
 
-      <div class="form__input">
-        <input
-          type="date"
-          placeholder="Email Address"
-          formControlName="dateNaissance"
-        />
-      </div>
-      <div class="form__input">
-        <label class="label">Genre</label>
-        <select formControlName="sexe" class="option" value="Homme">
-          <option value="" selected disabled hidden>Choisir ici</option>
-          <option value="Homme" class="option">Homme</option>
-          <option value="Femme" class="option">Femme</option>
-          <option value="Autre" class="option">Autre</option>
-        </select>
-      </div>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
 
-      <div class="form__input">
-        <input type="text " placeholder="Adresse" formControlName="adresse" />
-      </div>
-      <div class="form__input">
-        <input
-          type="text"
-          formControlName="codePostale"
-          placeholder="Code postale"
-        />
-      </div>
-      <div class="form__input">
-        <input
-          type="text"
-          placeholder="Numéro de téléphone"
-          formControlName="numTel"
-        />
-      </div>
-      <div class="form__input">
-        <input placeholder="Email" type="email" formControlName="email" />
-      </div>
-      <div class="form__input">
-        <input type="text" placeholder="username" formControlName="username" />
-      </div>
-      <div class="form__input">
-        <input
-          type="password"
-          placeholder="password"
-          formControlName="password"
-        />
-      </div>
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
 
-      <button class="submit-btn" type="submit" (click)="register()">
-        Créer un compte
-      </button>
-      <p class="form__terms">
-        By clicking the button, you are agreeing to our
-        <span>Terms and Services</span>
-      </p>
-    </form>
-    <!-- form ends -->
-  </section>
-  <!-- sign-up ends -->
-</main>
+<!-- Dialog Add USER -->
+
+<ng-template #myDialog
+  ><main>
+    <section class="sign-up">
+      <form class="sign-up__form">
+        <h2>Add new user</h2>
+
+        <div class="form__input">
+          <input
+            type="text"
+            placeholder="First Name"
+            required=""
+            [formControl]="formCreateUser.controls['nom']"
+          />
+          <div
+            *ngIf="
+              formCreateUser.controls.nom.touched &&
+              formCreateUser.controls.nom.errors?.required
+            "
+            class="text text-danger"
+          >
+            First Name is required.
+          </div>
+        </div>
+
+        <div class="form__input">
+          <input
+            type="text"
+            placeholder="Last name"
+            [formControl]="formCreateUser.controls['prenom']"
+          />
+          <div
+            *ngIf="
+              formCreateUser.controls.prenom.touched &&
+              formCreateUser.controls.prenom.errors?.required
+            "
+            class="text text-danger"
+          >
+            Last is required.
+          </div>
+        </div>
+
+        <div class="form__input">
+          <label class="label">Birth Date</label>
+
+          <input
+            type="date"
+            placeholder="Birth Date"
+            [formControl]="formCreateUser.controls['dateNaissance']"
+          />
+          <div
+            *ngIf="
+              formCreateUser.controls.dateNaissance.touched &&
+              formCreateUser.controls.dateNaissance.errors?.required
+            "
+            class="text text-danger"
+          >
+            Birth Date is required.
+          </div>
+        </div>
+
+        <div class="form__input">
+          <input
+            placeholder="Email"
+            type="email"
+            [formControl]="formCreateUser.controls['email']"
+          />
+          <div
+            *ngIf="
+              formCreateUser.controls.email.touched &&
+              formCreateUser.controls.email.errors?.required
+            "
+            class="text text-danger"
+          >
+            Email is required.
+          </div>
+          <div
+            *ngIf="
+              formCreateUser.controls.email.touched &&
+              formCreateUser.controls.email.errors?.email
+            "
+            class="text text-danger"
+          >
+            Wrong email format
+          </div>
+        </div>
+        <div class="form__input">
+          <input
+            type="text"
+            placeholder="username"
+            [formControl]="formCreateUser.controls['username']"
+          />
+          <div
+            *ngIf="
+              formCreateUser.controls.username.touched &&
+              formCreateUser.controls.username.errors?.required
+            "
+            class="text text-danger"
+          >
+            User Name is required.
+          </div>
+        </div>
+        <div class="form__input">
+          <input
+            type="password"
+            placeholder="password"
+            [formControl]="formCreateUser.controls['password']"
+          />
+          <div
+            *ngIf="
+              formCreateUser.controls.password.touched &&
+              formCreateUser.controls.password.errors?.required
+            "
+            class="text text-danger"
+          >
+            Password is required.
+          </div>
+          <div
+            *ngIf="
+              formCreateUser.controls.password.touched &&
+              formCreateUser.controls.password.errors?.minlength
+            "
+            class="text text-danger"
+          >
+            Password conrains at least 6 characters.
+          </div>
+        </div>
+        <div class="form__input">
+          <label class="label">Role</label>
+          <select class="option" (change)="onSelectRole($event.target.value)">
+            <!-- <option value="GUEST" selected disabled hidden>GUEST</option> -->
+            <option
+              *ngFor="let item of my_Roles"
+              [value]="item.name"
+              class="option"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              formCreateUser.controls.roles.touched &&
+              formCreateUser.controls.roles.errors?.required
+            "
+            class="text text-danger"
+          >
+            Role is required
+          </div>
+        </div>
+        <!-- <div class="form__input">
+        <label class="label">Birth Date</label>
+        <input type="text" placeholder="DD" id="date" />
+        <input type="text" placeholder="MM" id="month" />
+        <input type="text" placeholder="YYYY" id="year" />
+        <div *ngIf="!res_check_date" class="text text-danger">Wrong date</div>
+      </div> -->
+        <button class="submit-btn" type="submit" (click)="addUser()">
+          Create user
+        </button>
+      </form>
+    </section>
+  </main></ng-template
+>

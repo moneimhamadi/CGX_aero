@@ -1,85 +1,83 @@
-<ng-template #myDialog>
-  <div class="row">
-    <h1>Mot de passe oubliée</h1>
-    <h6 class="information-text">Enter votre username</h6>
-    <div class="form-group">
-      <input
-        type="email"
-        name="user_email"
-        id="user_email"
-        [(ngModel)]="username"
-      />
-      <p><label for="username">Username</label></p>
-      <button (click)="sendResetPasswordEmail()">
-        Réinitialiser le mot de passe
-      </button>
+<!-- <div class="container">
+  <div class="col-md-9 card mx-auto d-flex flex-row px-0">
+    <div class="img-left d-md-flex d-none">
+      <img src="../../assets/CGX_Logo_DSC.png" alt="" />
     </div>
-    <div class="footer">
-      <h5>
-        <a
-          [routerLink]="['/create-account']"
-          routerLinkActive="router-link-active"
-          >Créer un compte</a
-        >
-      </h5>
-      <h5>
-        Vous avez un compte?
-        <a
-          [routerLink]="['/authenticate']"
-          routerLinkActive="router-link-active"
-          >Se connecter</a
-        >
-      </h5>
-    </div>
-  </div>
-</ng-template>
-<div class="login">
-  <div class="container">
-    <div class="parentlogin">
-      <form [formGroup]="loginForm">
-        <div class="title">
-          <h1 style="font-size: 40px; font-weight: bold">Se connecter</h1>
-        </div>
-        <label class="label" for="name">Username</label>
-        <input type="text" placeholder="username" formControlName="username" />
-        <label class="label" for="password">Password</label>
-        <input
-          type="password"
-          placeholder="password"
-          placeholder="password"
-          formControlName="password"
-        />
-        <button type="submit" class="submit" (click)="authenticate()">
-          Connecter
-        </button>
-        <div class="extra">
-          <div class="forget">
-            <button
-              class="forget_password"
-              (click)="openDialogForgetPassword(myDialog)"
-            >
-              Mot de passe oubliée
-            </button>
+
+    <div class="card-body d-flex flex-column justify-content-center">
+      <h4 class="title text-center mt-4 pb-3">Login into account</h4>
+      <form class="col-sm-10 col-12 mx-auto">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="username"
+            required=""
+            [formControl]="loginForm.controls['username']"
+          />
+          <div
+            *ngIf="
+              loginForm.controls.username.touched &&
+              loginForm.controls.username.errors?.required
+            "
+            class="text text-danger"
+          >
+            Username is required.
           </div>
+        </div>
+        <div class="form-group py-3">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="**********"
+            required=""
+            [formControl]="loginForm.controls['password']"
+          />
+          <div
+            *ngIf="
+              loginForm.controls.password.touched &&
+              loginForm.controls.password.errors?.required
+            "
+            class="text text-danger"
+          >
+            Password is required.
+          </div>
+        </div>
+        <div class="">
+          <input
+            type="button"
+            class="btn btn-outline-primary d-block w-100"
+            value="Login"
+            (click)="authenticate()"
+          />
         </div>
       </form>
     </div>
-    <div class="parentdesc">
-      <div class="description">
-        <img
-          src="../../assets/Big_Smoke.png"
-          width="200px"
-          height="180px"
-          alt=""
-        />
-        <h2>Bienvenu</h2>
-        <p>Don't have an account?</p>
-        <a
-          [routerLink]="['/create-account']"
-          routerLinkActive="router-link-active"
-          >Créer un compte</a
-        >
-      </div>
-    </div>
   </div>
+</div> -->
+<div class="body"></div>
+<div class="grad"></div>
+
+<div class="header">
+  <div>CGX<span>aero</span></div>
+</div>
+<br />
+<div class="login">
+  <input
+    type="text"
+    placeholder="username"
+    name="user"
+    required=""
+    [formControl]="loginForm.controls['username']"
+  /><br />
+  <input
+    type="password"
+    placeholder="password"
+    [formControl]="loginForm.controls['password']"
+    name="password"
+  /><br />
+  <input type="button" value="Login" (click)="authenticate()" /> <br />
+  <a [routerLink]="['/home']" routerLinkActive="router-link-active"
+    >Go back to home page</a
+  >
 </div>

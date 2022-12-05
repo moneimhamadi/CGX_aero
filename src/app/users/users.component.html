@@ -1,28 +1,35 @@
-<div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2" style="margin-bottom: 50px">USERS</div>
-  <div>
-    <h2 style="color: black">Liste des utilisateurs</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Username</th>
-          <th>Date de dateNaissance</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of listOfUsers">
-          <td data-label="Projeto" style="width: 200px">{{ item.nom }}</td>
-          <td data-label="Descrição">{{ item.prenom }}</td>
-          <td data-label="Administrador">{{ item.username }}</td>
-          <td data-label="Aplicações">
-            {{ item.dateNaissance | date: "dd/MM/yyyy" }}
-          </td>
-          <td data-label="Criado">{{ item.email }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container">
+  <div class="type_map">
+    <label>Select the type of map</label><br />
+
+    <select (change)="onSelectTypeOfMap($event.target.value)">
+      <option value="" selected disabled hidden>-- Select type --</option>
+
+      <option *ngFor="let item of typeOfMaps" [value]="item.name">
+        {{ item.name }}
+      </option>
+    </select>
   </div>
+
+  <div class="search_adress">
+    <label>Type a place to search</label><br />
+    <input type="text" id="search_input" placeholder="Adresse de partenaire" />
+  </div>
+  <input type="hidden" id="loc_lat" />
+  <input type="hidden" id="loc_long" />
+  <div class="latlong-view" [hidden]="true">
+    <p><b>Latitude:</b> <span id="latitude_view"></span></p>
+    <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+  </div>
+  <div
+    id="googlemap"
+    style="
+      width: 90%;
+      margin: auto;
+      height: 450px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 50px;
+    "
+  ></div>
 </div>

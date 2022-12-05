@@ -1,0 +1,32 @@
+<div class="container">
+  <h3>Fibonacci number</h3>
+  <p>
+    In mathematics, the fibonacci numbres are the numbers in the following
+    integer sequence, called the Fibonacci sequence, and characterized by the
+    fact that every number after the first two is the sum of the two preceding
+    ones:
+  </p>
+  <div class="input">{{ my_numbers }}</div>
+  <p>
+    The sequence Fn of Fibanacci numbers is dfined by the recurrence relation :
+  </p>
+  <p class="fibonacci">
+    F<sub>0</sub> = 0, F<sub>1</sub> = 1, F<sub>n</sub> = F<sub>n-1</sub> +
+    F<sub>n-2</sub>
+  </p>
+
+  <div class="calc">
+    <label for="n">Given n: </label>
+    <input id="n" type="number" min="0" />
+  </div>
+  <div style="margin: 1rem 0">
+    <button class="btn btn-success" id="compute" type="button">
+      Compute F<sub>n</sub>
+    </button>
+  </div>
+
+  <div>
+    <label for="result">Result: </label>
+    <input id="result" type="text" readonly />
+  </div>
+</div>

@@ -20,11 +20,10 @@ export class TokenInterceptor implements HttpInterceptor {
     let authService = this.inject.get(AuthentificationService);
     let authRequest = request;
     authRequest = this.AddTokenHeader(request, authService.getAccesssToken());
-    console.log('Check Intercept');
     return next.handle(authRequest).pipe(
       catchError((error) => {
         console.log(error.status);
-        if (error.status === 403) {
+        if (error.status === 401) {
           this.handleRefreshToken(request, next);
         }
         return throwError(error);

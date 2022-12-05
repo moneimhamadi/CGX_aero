@@ -1,7 +1,10 @@
 mat-toolbar {
+  background: rgba(8, 80, 138, 255);
   position: sticky;
   top: 0;
+  margin-left: 1px;
   z-index: 100;
+  margin-bottom: 30px;
 }
 
 ul {
@@ -10,28 +13,17 @@ ul {
   }
 }
 button {
+  color: white;
   outline: none;
   border: 0;
   background: transparent;
 }
-.user {
-  font-size: 14px;
-}
-mat-toolbar {
-  background: #f7f7f7;
-}
-.user-image {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  &-icon {
-    height: 18px;
-    font-size: 16px;
-  }
+p{  
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin-left: 50px;
+  
 }
 
-::ng-deep {
-  .mat-menu-content {
-    width: 160px;
-  }
-}
+
