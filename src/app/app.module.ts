@@ -29,6 +29,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CdkTableModule } from '@angular/cdk/table';
 import { FibonacciComponent } from './fibonacci/fibonacci.component';
+import { LeafletMapComponent } from './leaflet-map/leaflet-map.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { FibonacciComponent } from './fibonacci/fibonacci.component';
     UsersComponent,
     FullComponent,
     FibonacciComponent,
+    LeafletMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,8 @@ import { FibonacciComponent } from './fibonacci/fibonacci.component';
     GoogleMapsModule,
     CdkTableModule,
     MatTableModule,
+    LeafletModule,
+
     // * MATERIAL IMPORTS
     MatSidenavModule,
     MatToolbarModule,

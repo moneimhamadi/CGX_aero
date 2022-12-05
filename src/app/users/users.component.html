@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="map_buttons">
+    <a routerLink="/all/users">Google Map</a>
+    <a routerLink="/all/leaflet">Leaflet map</a>
+  </div>
   <div class="type_map">
     <label>Select the type of map</label><br />
 
@@ -21,15 +25,5 @@
     <p><b>Latitude:</b> <span id="latitude_view"></span></p>
     <p><b>Longitude:</b> <span id="longitude_view"></span></p>
   </div>
-  <div
-    id="googlemap"
-    style="
-      width: 90%;
-      margin: auto;
-      height: 450px;
-      position: relative;
-      overflow: hidden;
-      margin-top: 50px;
-    "
-  ></div>
+  <div id="googlemap"></div>
 </div>

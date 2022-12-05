@@ -1,3 +1,11 @@
+#googlemap{
+  width: 90%;
+  margin: auto;
+  height: 450px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 50px;
+}
 .container {
   background-color: white;
 }
@@ -25,4 +33,23 @@
   width: 300px;
   text-align: center;
   text-align-last: center;
+}
+a{
+  margin-top: 15px;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+  text-decoration: underline;
+}
+
+.map_buttons{
+display: flex;
+justify-content: center;
+margin-left: 10px;
 }

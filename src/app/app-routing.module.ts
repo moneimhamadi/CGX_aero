@@ -5,6 +5,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { FibonacciComponent } from './fibonacci/fibonacci.component';
 import { FullComponent } from './full/full.component';
 import { HomeComponent } from './home/home.component';
+import { LeafletMapComponent } from './leaflet-map/leaflet-map.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuardService } from './Services/auth-guard.service';
 import { UsersComponent } from './users/users.component';
@@ -31,6 +32,11 @@ const routes: Routes = [
       {
         path: 'administration',
         component: CreateAccountComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'leaflet',
+        component: LeafletMapComponent,
         canActivate: [AuthGuardService],
       },
     ],
