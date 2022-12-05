@@ -17,7 +17,6 @@ export class FibonacciComponent implements OnInit {
     let result = (<HTMLInputElement>(
       document.getElementById('result')
     )) as HTMLInputElement;
-    console.log(input.value);
 
     document.getElementById('compute').addEventListener('click', () => {
       const fn: number = this.fibonacci(input.valueAsNumber);

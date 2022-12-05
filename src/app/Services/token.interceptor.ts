@@ -8,10 +8,11 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { AuthentificationService } from './authentification.service';
 import { catchError, switchMap } from 'rxjs/operators';
+import { Route, Router } from '@angular/router';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(private inject: Injector) {}
+  constructor(private inject: Injector, private route: Router) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -24,7 +25,10 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((error) => {
         console.log(error.status);
         if (error.status === 401) {
-          this.handleRefreshToken(request, next);
+          // this.handleRefreshToken(request, next);
+          alert('Session Expired !!  Login again');
+          localStorage.clear();
+          this.route.navigate(['/login']);
         }
         return throwError(error);
       })
